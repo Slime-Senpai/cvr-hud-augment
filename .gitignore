@@ -1,0 +1,11 @@
+# Binaries
+bin
+obj
+
+# CMake/project files
+.idea/
+*.user
+.vs/
+
+# Resource auto-generated files
+*.Designer.cs
