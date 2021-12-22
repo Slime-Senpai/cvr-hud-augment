@@ -10,15 +10,11 @@ namespace SlimyHubAugment
 {
     public class HudAugmentMod : MelonMod
     {
-        public static MelonLogger.Instance Logger;
         public override void OnApplicationStart()
         {
-            LoggerInstance.Msg("Slimy HUD Augment requires you to use a custom HUD UI. Otherwise the mod is useless.");
             // Plugin startup logic
-            LoggerInstance.Msg($"Plugin SlimyHudAugment is loaded in version 1.0.0!");
-            LoggerInstance.Msg($"Plugin SlimyHudAugment requires you to use a custom HUD UI. Otherwise the mod is useless.");
-
-            Logger = LoggerInstance;
+            MelonLogger.Msg($"Plugin SlimyHudAugment is loaded in version 1.0.0!");
+            MelonLogger.Msg($"Plugin SlimyHudAugment requires you to use a custom HUD UI. Otherwise the mod is useless.");
 
             var _harmonyInstance = HarmonyInstance;
 
@@ -37,7 +33,7 @@ namespace SlimyHubAugment
 
         public static void PlayAudio(string sound)
         {
-            Logger.Msg($"PlayAudio triggered with sound {sound}");
+            MelonLogger.Msg($"PlayAudio triggered with sound {sound}");
             InterfaceAudio.PlayModule(sound);
         }
     }

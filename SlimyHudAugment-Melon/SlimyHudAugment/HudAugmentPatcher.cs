@@ -3,6 +3,7 @@ using ABI_RC.Core.InteractionSystem;
 using ABI_RC.Core.Networking.IO.Social;
 using cohtml;
 using System;
+using MelonLoader;
 
 namespace SlimyHubAugment
 {
@@ -13,7 +14,7 @@ namespace SlimyHubAugment
 
         static void RegisterEvents_PostFixPatch(CohtmlHud __instance, CohtmlView ___hudView)
         {
-            HudAugmentMod.Logger.Msg("Adding an event to CohtmlHud RegisterEvents");
+            MelonLogger.Msg("Adding an event to CohtmlHud RegisterEvents");
             ___hudView.View.BindCall("SL1PlayAudio", new Action<string>(HudAugmentMod.PlayAudio));
 
             _hudView = ___hudView;
@@ -25,7 +26,7 @@ namespace SlimyHubAugment
 
             if (!_hudView)
             {
-                HudAugmentMod.Logger.Error($"_hudView is null, impossible to send friends to hud");
+                MelonLogger.Error($"_hudView is null, impossible to send friends to hud");
 
                 return;
             }
