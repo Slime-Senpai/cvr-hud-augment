@@ -4,6 +4,7 @@ using ABI_RC.Core.Networking.IO.Social;
 using cohtml;
 using System;
 using MelonLoader;
+using System.Collections.Generic;
 
 namespace SlimyHubAugment
 {
@@ -20,10 +21,8 @@ namespace SlimyHubAugment
             _hudView = ___hudView;
         }
 
-        static void PushList_PostFixPatch(ViewManager __instance, ViewManager.UiEventTypes t)
+        static void RequestFriendsListTask_PostFixPatch(List<Friend_t> ____friends)
         {
-            if (t != ViewManager.UiEventTypes.FriendsList) return;
-
             if (!_hudView)
             {
                 MelonLogger.Error($"_hudView is null, impossible to send friends to hud");
@@ -31,7 +30,7 @@ namespace SlimyHubAugment
                 return;
             }
 
-            _hudView.View.TriggerEvent("SL1LoadFriends", Friends.List);
+            _hudView.View.TriggerEvent("SL1LoadFriends", ____friends);
         }
     }
 }

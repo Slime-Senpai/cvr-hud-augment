@@ -8,10 +8,11 @@ using ABI_RC.Core.Networking.IO.Social;
 using cohtml;
 using System;
 using System.Reflection;
+using System.Collections.Generic;
 
 namespace SlimyHudAugment
 {
-    [BepInPlugin("fr.slimesenpai.plugins.hudaugment", "SlimyHudAugment", "1.0.0")]
+    [BepInPlugin("fr.slimesenpai.plugins.hudaugment", "SlimyHudAugment", "1.0.1")]
     [BepInProcess("ChilloutVR.exe")]
     public class Plugin : BaseUnityPlugin
     {
@@ -21,7 +22,7 @@ namespace SlimyHudAugment
         {
             Plugin.Log = base.Logger;
             // Plugin startup logic
-            Plugin.Log.LogInfo($"Plugin SlimyHudAugment is loaded in version 1.0.0!");
+            Plugin.Log.LogInfo($"Plugin SlimyHudAugment is loaded in version 1.0.1!");
             Plugin.Log.LogInfo($"Plugin SlimyHudAugment requires you to use a custom HUD UI. Otherwise the mod is useless.");
 
             var _harmonyInstance = new Harmony("fr.slimesenpai.plugins.hudaugment.patch");
@@ -32,9 +33,9 @@ namespace SlimyHudAugment
 
             _harmonyInstance.Patch(original, null, new HarmonyMethod(patch));
 
-            MethodInfo original2 = AccessTools.Method(typeof(ViewManager), "PushList");
+            MethodInfo original2 = AccessTools.Method(typeof(ViewManager), "RequestFriendsListTask");
 
-            MethodInfo patch2 = AccessTools.Method(typeof(HudAugmentPatcher), "PushList_PostFixPatch");
+            MethodInfo patch2 = AccessTools.Method(typeof(HudAugmentPatcher), "RequestFriendsListTask_PostFixPatch");
 
             _harmonyInstance.Patch(original2, null, new HarmonyMethod(patch2));
         }
@@ -59,17 +60,15 @@ namespace SlimyHudAugment
             _hudView = ___hudView;
         }
 
-        static void PushList_PostFixPatch(ViewManager __instance, ViewManager.UiEventTypes t)
+        static void RequestFriendsListTask_PostFixPatch(List<Friend_t> ____friends)
         {
-            if (t != ViewManager.UiEventTypes.FriendsList) return;
-
             if (!_hudView) {
                 Plugin.Log.LogError($"_hudView is null, impossible to send friends to hud");
 
                 return;
             }
 
-			_hudView.View.TriggerEvent("SL1LoadFriends", Friends.List);
+			_hudView.View.TriggerEvent("SL1LoadFriends", ____friends);
         }
     }
 }

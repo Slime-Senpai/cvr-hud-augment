@@ -22,16 +22,16 @@
 
 	<ItemGroup>
 		<Reference Include="Assembly-CSharp">
-			<HintPath>G:\Steam\steamapps\common\ChilloutVR\ChilloutVR_Data\Managed\Assembly-CSharp.dll</HintPath>
+			<HintPath>D:\Steam\steamapps\common\ChilloutVR\ChilloutVR_Data\Managed\Assembly-CSharp.dll</HintPath>
 		</Reference>
 		<Reference Include="cohtml.Net">
-			<HintPath>G:\Steam\steamapps\common\ChilloutVR\ChilloutVR_Data\Managed\cohtml.Net.dll</HintPath>
+			<HintPath>D:\Steam\steamapps\common\ChilloutVR\ChilloutVR_Data\Managed\cohtml.Net.dll</HintPath>
 		</Reference>
 		<Reference Include="Cohtml.RenderingBackend">
-			<HintPath>G:\Steam\steamapps\common\ChilloutVR\ChilloutVR_Data\Managed\Cohtml.RenderingBackend.dll</HintPath>
+			<HintPath>D:\Steam\steamapps\common\ChilloutVR\ChilloutVR_Data\Managed\Cohtml.RenderingBackend.dll</HintPath>
 		</Reference>
 		<Reference Include="Cohtml.Runtime">
-			<HintPath>G:\Steam\steamapps\common\ChilloutVR\ChilloutVR_Data\Managed\Cohtml.Runtime.dll</HintPath>
+			<HintPath>D:\Steam\steamapps\common\ChilloutVR\ChilloutVR_Data\Managed\Cohtml.Runtime.dll</HintPath>
 		</Reference>
 	</ItemGroup>
 </Project>

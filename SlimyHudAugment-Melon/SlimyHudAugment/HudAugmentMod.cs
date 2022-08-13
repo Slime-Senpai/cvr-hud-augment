@@ -13,7 +13,7 @@ namespace SlimyHubAugment
         public override void OnApplicationStart()
         {
             // Plugin startup logic
-            MelonLogger.Msg($"Plugin SlimyHudAugment is loaded in version 1.0.0!");
+            MelonLogger.Msg($"Plugin SlimyHudAugment is loaded in version 1.0.1!");
             MelonLogger.Msg($"Plugin SlimyHudAugment requires you to use a custom HUD UI. Otherwise the mod is useless.");
 
             var _harmonyInstance = HarmonyInstance;
@@ -24,9 +24,9 @@ namespace SlimyHubAugment
 
             _harmonyInstance.Patch(original, null, new HarmonyMethod(patch));
 
-            MethodInfo original2 = AccessTools.Method(typeof(ViewManager), "PushList");
+            MethodInfo original2 = AccessTools.Method(typeof(ViewManager), "RequestFriendsListTask");
 
-            MethodInfo patch2 = AccessTools.Method(typeof(HudAugmentPatcher), "PushList_PostFixPatch");
+            MethodInfo patch2 = AccessTools.Method(typeof(HudAugmentPatcher), "RequestFriendsListTask_PostFixPatch");
 
             _harmonyInstance.Patch(original2, null, new HarmonyMethod(patch2));
         }
